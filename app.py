@@ -189,24 +189,40 @@ class ProgramLauncher:
                 with open("abr_chemins.py", "r") as f:
                     code = f.read()
 
+                # Traiter les données d'entrée : chaque ligne devient un élément de la liste
                 lines = input_values.split("\n")
-                donnees = "\\n".join(lines)
-                modified_code = code.replace('donnees = """806 → 249 → 528 → 666 → 555 → 546 → 549 → 541', f'donnees = """{donnees}')
 
+                # Créer une liste de chaînes de caractères en conservant chaque ligne comme un élément séparé
+                temps = [line for line in lines]
+
+                
+                formatted_donnees = []
+                
+                for ligne in temps:
+                    nombres = ligne.split(" → ")
+                    formatted_donnees.append([int(nombre) for nombre in nombres])
+
+                # Remplacer 'remplacer' dans le code par les données formatées
+                modified_code = code.replace('[[806, 249, 528, 666, 555, 546, 549, 541]]', str(formatted_donnees))
+
+                # Sauvegarder le code modifié dans le fichier temporaire
                 with open(temp_file, "w") as f:
                     f.write(modified_code)
 
+
+
+
             elif self.current_program == "Arbre Binaire":
-                with open("binary_tree.py", "r") as f:
+                with open("DeroulerQuickSort.py", "r") as f:
                     code = f.read()
-                modified_code = code.replace('[ 608, 849, 418, 321, 517, 697, 802, 212, 535, 924, 269, 357, 754, 152 ]', str(input_values))
+                modified_code = code.replace('[ 491, 325, 861, 729, 378, 627, 811, 271, 690, 443, 910, 171, 143, 539 ]', str(input_values))
                 with open(temp_file, "w") as f:
                     f.write(modified_code)
 
             elif self.current_program == "QuickSort Tree":
-                with open("DeroulerQuickSort.py", "r") as f:
+                with open("binary_tree.py", "r") as f:
                     code = f.read()
-                modified_code = code.replace('[ 491, 325, 861, 729, 378, 627, 811, 271, 690, 443, 910, 171, 143, 539 ]', str(input_values))
+                modified_code = code.replace('[ 608, 849, 418, 321, 517, 697, 802, 212, 535, 924, 269, 357, 754, 152 ]', str(input_values))
                 with open(temp_file, "w") as f:
                     f.write(modified_code)
 
