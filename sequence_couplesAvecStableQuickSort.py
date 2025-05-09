@@ -61,10 +61,10 @@ def stable_quickselect(arr, k):
     return result, pivot_sequence
 
 # Tableau d'entrée
-arr = [ 986, 371, 773, 508, 393, 922, 522, 647, 498, 423 ]
+arr = [ 166 ,370 ,197,936 ,596 ,680,145,491,539, 486 ,461 ]
 
 # Recherche de l'élément de rang k
-k = 2
+k = 5
 element, pivot_sequence = stable_quickselect(arr, k)
 
 print(f"L'élément de rang {k} est: {element}")

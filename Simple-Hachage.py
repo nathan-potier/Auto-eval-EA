@@ -24,10 +24,10 @@ def resize_table_simple(old_table):
                 raise Exception(f"Échec de réinsertion de la clé {key} après redimensionnement")
     return new_table
 
-def extend_table_with_keys_simple(initial_table, new_keys, verbose=False):
+def extend_table_with_keys_simple(initial_table, new_keys, verbose=False,resize_before_insert=False):
     table = initial_table.copy()
     # Redimensionner la table avant l'insertion de 48 si nécessaire
-    if len(new_keys) > 0 :  # 
+    if resize_before_insert :  # 
         print("Redimensionnement avant insertion de 48")
         table = resize_table_simple(table)
 
@@ -47,7 +47,7 @@ def print_table_as_tiles(table):
 print("Table taille 13, sans redimensionnement :")
 
 """Remplacer"""
-keys_13 = [22  ,  35  ,  42  ,  62  ,  8  ,  19  ,  47  ,  6  ,  7  ,  23]
+keys_13 = [55  ,  16  ,  41  ,  36  ,  43  ,  54  ,  60  ,  32  ,  44  ,  15  ]
 initial_table_13 = [None] * 13
 
 
@@ -58,9 +58,9 @@ print_table_as_tiles(table13)
 print("\nTable taille 9 avec redimensionnement avant insertion de 48 :")
 
 """Remplacer"""
-initial_table_9 = [8,	28	,9,	45	  ,None,None,	  	6,None,	  	44]
-Inser_key = [26]
+initial_table_9 = [None ,1,	2	,21,	40	,38,	39,None,None]
+Inser_key = [4]
 
 # Redimensionner avant l'insertion de 48
-table18 = extend_table_with_keys_simple(initial_table_9, Inser_key, verbose=True)
+table18 = extend_table_with_keys_simple(initial_table_9, Inser_key, verbose=True, resize_before_insert=True)
 print_table_as_tiles(table18)

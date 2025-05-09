@@ -30,9 +30,9 @@ def resize_table_double(old_table):
                 raise Exception(f"Échec de réinsertion de la clé {key} après redimensionnement")
     return new_table
 
-def extend_table_with_keys(initial_table, new_keys, verbose=False):
+def extend_table_with_keys(initial_table, new_keys, verbose=False,resize_before_insert=False):
     table = initial_table.copy()
-    if len(new_keys) > 0 and new_keys[0] == 48:
+    if resize_before_insert:
         print("Redimensionnement avant insertion de 48")
         table = resize_table_double(table)
 
@@ -82,12 +82,12 @@ def delete_key(table, key):
 
 def simulate_operations():
     print("=== Simulation selon l'image : suppression(1) → insertion(9) → insertion(1) → suppression(9) ===")
-    table = [52, 44, None, 29, None, 57, 58, 1, 8, 35, 9, None, None]
+    table = [56, 27,None,1,17,25,30,33,None,None,None,11,12]
     operations = [
-        ("delete", 1),
-        ("insert", 9),
-        ("insert", 1),
-        ("delete", 9)
+        ("delete", 25),
+        ("insert", 30),
+        ("insert", 25),
+        ("delete", 30)
     ]
     for op, key in operations:
         if op == "delete":
@@ -106,14 +106,14 @@ def run_all():
     simulate_operations()
 
     print("\n=== Table taille 13, sans redimensionnement ===")
-    keys_13 = [55, 47, 35, 40, 34, 32, 14, 16, 1, 27]
+    keys_13 = [50  ,  23  ,  57  ,  63  ,  2  ,  36  ,  10  ,  38  ,  8  ,  27]
     initial_table_13 = [None] * 13
     table13 = extend_table_with_keys(initial_table_13, keys_13)
     print_table_as_tiles(table13)
 
     print("\n=== Table taille 9 avec redimensionnement avant insertion de 48 ===")
-    initial_table_9 = [44, 34, None, 30, 12, None, None, 43, 35]
-    table18 = extend_table_with_keys(initial_table_9, [48], verbose=True)
+    initial_table_9 = [21,	34,	29,	30	,None,None,  	  	43	,7,None]
+    table18 = extend_table_with_keys(initial_table_9, [3], verbose=True,resize_before_insert=True)
     print_table_as_tiles(table18)
 
 # Lancer tout

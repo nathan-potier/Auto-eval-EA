@@ -1,19 +1,25 @@
-entree = [8 ,  47  , 22 ,  29  , 12  , 26  , 19  , 10 ,  7 ,  11 ,  31]
+chaine = """
+
+15   08   55   25   41   21   20   13   16   09   22
+
+
+"""
+entree = [int(x) for x in chaine.split()]
+
 mod = 7
 
+affichage = [1,2,3,0,1,0,4]
 
-
-res = {}
+res = [0] * mod
 
 for e in entree :
     t = e % mod
-    if t in res :
-        
-        res[t]+= 1
-    else :
-        res[t] = 1
+
+    res[t]+= 1
+
         
 
 
-res = dict(sorted(res.items()))
+
 print (res)
+print(res == affichage)

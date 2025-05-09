@@ -70,7 +70,24 @@ class ProgramLauncher:
                 "input_type": "list",
                 "default_input": [986, 371, 773, 508, 393, 922, 522, 647, 498, 423],
                 "extra_input": {"k": 2}
-            }
+            },
+            
+            
+#            "Hachage Simple": {
+#                "description": "Réalise un hachage simple sur une liste de clés",
+#                "input_type": "list",
+#                "default_input": [25, 42, 96, 17, 58, 34]
+#            },
+#            "Hachage Chaînage": {
+#                "description": "Implémente un hachage avec chaînage pour résoudre les collisions",
+#                "input_type": "list",
+#                "default_input": [15, 11, 27, 8, 12]
+#            },
+#            "Double Hachage": {
+#                "description": "Utilise le double hachage pour gérer les collisions dans une table de hachage",
+#                "input_type": "list",
+#                "default_input": [37, 25, 14, 52, 31, 43]
+#            }
         }
 
         # Program listbox
@@ -247,6 +264,28 @@ class ProgramLauncher:
                 modified_code = modified_code.replace('k = 2', f'k = {extra_values["k"]}')
                 with open(temp_file, "w") as f:
                     f.write(modified_code)
+                    
+            elif self.current_program == "Hachage Simple":
+                with open("hachage_simple.py", "r") as f:
+                    code = f.read()
+                modified_code = code.replace('[25, 42, 96, 17, 58, 34]', str(input_values))
+                with open(temp_file, "w") as f:
+                    f.write(modified_code)
+
+            elif self.current_program == "Hachage Chaînage":
+                with open("Hachage-chainage.py", "r") as f:
+                    code = f.read()
+                modified_code = code.replace('[15, 11, 27, 8, 12]', str(input_values))
+                with open(temp_file, "w") as f:
+                    f.write(modified_code)
+
+            elif self.current_program == "Double Hachage":
+                with open("double_hachage.py", "r") as f:
+                    code = f.read()
+                modified_code = code.replace('[37, 25, 14, 52, 31, 43]', str(input_values))
+                with open(temp_file, "w") as f:
+                    f.write(modified_code)
+
 
             if sys.platform == "win32":
                 subprocess.Popen(["start", "cmd", "/k", "python", temp_file], shell=True)
